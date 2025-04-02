@@ -1,0 +1,139 @@
+<h2 style="text-align: center; margin-top: 37px">{{ section.settings.titulo_catalogo }}</h2>
+
+<hr class="espaçamento-top-collection">
+<form
+  action=""
+  method="GET"
+  class="filters-form">
+  <div class="filter-item">
+    <select name="category" id="category">
+      <option value="">Categorias ▽</option>
+      <option value="categoria1">Categoria 1</option>
+      <option value="categoria2">Categoria 2</option>
+      <option value="categoria3">Categoria 3</option>
+    </select>
+    <div></div>
+  </div>
+
+  <div class="filter-item">
+    <select name="feature" id="feature">
+      <option value="">Feature ▽</option>
+      <option value="ideal-para-pet">Ideal para Pet</option>
+      <option value="passa-ponte">Passa Pano</option>
+    </select>
+  </div>
+
+
+  <div class="filter-item">
+    <select name="price" id="price">
+      <option value="">Preços ▽</option>
+      <option value="0-100">Até R$100</option>
+      <option value="100-500">R$100 - R$500</option>
+      <option value="500-1000">R$500 - R$1000</option>
+      <option value="1000-2000">R$1000 - R$2000</option>
+    </select>
+  </div>
+
+  <div class="filter-item-ordem">
+    <select name="ordem-items" id="ordem">
+      <option value="">Ordenar por ▽</option>
+      <option value="A-Z">A-Z</option>
+      <option value="Z-A">Z-A</option>
+    </select>
+  </div>
+
+</form>
+
+
+<hr>
+
+<div class="vitrine-catalogo">
+  {% assign colecao = collections[section.settings.colecao] %}
+
+  <div class="product-grid">
+    {% paginate colecao.products by 12 %}
+      {% assign filtered_products = colecao.products %}
+
+      {% assign category_filter = request.params.category %}
+      {% assign price_filter = request.params.price %}
+      {% assign feature_filter = request.params.feature %}
+
+      {% if category_filter %}
+        {% assign filtered_products = filtered_products | where: "category", category_filter %}
+      {% endif %}
+
+      {% if price_filter %}
+        {% assign price_range = price_filter | split: '-' %}
+        {% assign min_price = price_range[0] %}
+        {% assign max_price = price_range[1] %}
+
+        {% assign filtered_products = filtered_products | where: "price", min_price %}
+        {% assign filtered_products = filtered_products | where: "price", max_price %}
+      {% endif %}
+
+      {% if feature_filter %}
+        {% assign filtered_products = filtered_products | where: "tags", feature_filter %}
+      {% endif %}
+
+      {% if filtered_products.size > 0 %}
+        {% for product in filtered_products %}
+          {% render 'general__product-item'
+            , product: product %}
+        {% endfor %}
+      {% else %}
+        <p>Desculpe, nenhum produto encontrado para essa seleção de filtros.</p>
+      {% endif %}
+
+      <div class="pagination">
+        {% if paginate.pages > 1 %}
+          <nav>
+            <ul>
+              {% if paginate.previous %}
+                <li>
+                  <a href="{{ paginate.previous.url }}"><
+                  </a>
+                </li>
+              {% endif %}
+              
+              {% for part in paginate.parts %}
+                {% if part.is_link %}
+                  <li>
+                    <a href="{{ part.url }}">{{ part.title }}</a>
+                  </li>
+                {% else %}
+                  <li class="active">{{ part.title }}</li>
+                {% endif %}
+              {% endfor %}
+              
+              {% if paginate.next %}
+                <li>
+                  <a href="{{ paginate.next.url }}">
+                    ></a>
+                </li>
+              {% endif %}
+            </ul>
+          </nav>
+        {% endif %}
+      </div>
+    {% endpaginate %}
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "titulo_catalogo",
+    "settings": [
+      {
+        "type": "text",
+        "id": "titulo_catalogo",
+        "label": "Título",
+        "default": "Seu título aqui"
+      }, {
+        "type": "collection",
+        "id": "colecao",
+        "label": "Coleção"
+      }
+    ]
+  }
+{% endschema %}

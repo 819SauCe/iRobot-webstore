@@ -1,0 +1,18 @@
+.e-mosaic-banner__banner-list {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    gap: 24px;
+  }
+  
+  .e-mosaic-banner__banner-list > * {
+    width: 708px;
+    height: 360px;
+  }
+  
+  .e-mosaic-banner__banner-list > *:last-child {
+    margin-left: auto;
+  }
+  

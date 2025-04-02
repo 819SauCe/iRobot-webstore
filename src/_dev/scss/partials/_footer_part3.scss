@@ -1,0 +1,34 @@
+.custom-footer {
+    background: #fff;
+    padding: 40px 20px;
+    font-size: 14px;
+    color: #222;
+    text-align: center;
+  }
+  
+  .footer-top {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+  
+  .footer-section h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .footer-icons img {
+    height: 19px;
+    margin-top: 35px;
+    margin-left: 14px;
+  }
+  
+  .footer-bottom {
+    font-size: 12px;
+    color: #555;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+  

@@ -1,0 +1,60 @@
+<div class='e-main-banner'>
+  <div class='e-main-banner__banner-list e-desktop'>
+    {% for block in section.blocks %}
+      {% if block.type == 'main_banner' %}
+        {% if block.settings['main_banner-image-desktop'] != blank %}
+          <div class='e-main-banner__banner-list--item'>
+            <a href='{{ block.settings["main_banner-link"] }}'>
+              <img
+                src='{{ block.settings["main_banner-image-desktop"].src | img_url: '1600x600' }}'
+                class='e-main-banner__image'
+                alt='{{ block.settings["main_banner-image-desktop"].alt }}'>
+            </a>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Banner Principal Home",
+    "tag": "section",
+    "class": "e-main-banner-section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "main_banner-configs",
+        "label": "Configurações do Banner"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Banner",
+        "type": "main_banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "main_banner-image-desktop",
+            "label": "Imagem do Banner Desktop"
+          }, {
+            "type": "image_picker",
+            "id": "main_banner-image-mobile",
+            "label": "Imagem do Banner Mobile"
+          }, {
+            "type": "url",
+            "id": "main_banner-link",
+            "label": "Link do Banner"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner Principal Home"
+      }
+    ]
+  }
+{% endschema %}

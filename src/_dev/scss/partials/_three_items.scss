@@ -1,0 +1,140 @@
+.combo-section {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .right-side .product-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .right-side {
+    margin-left: 12px;
+    margin-top: 9px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .left-side {
+    width: 523px;
+    height: 646px;
+    padding-left: 63px;
+    display: flex;
+    flex-direction: column;
+    background-color: #9fb6a0;
+  }
+
+  .title {
+    font-size: 36px;
+    margin-top: 88px;
+  }
+
+  .title1 {
+    margin-top: 88px;
+    font-size: 36px;
+  }
+
+  .subtitle {
+    margin-top: 24px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .subtitle {
+    font-size: 16px;
+    margin-bottom: 30px;
+    font-weight: normal;
+    text-align: center;
+  }
+  
+  
+  .product-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 448px;
+    max-height: 350px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    gap: 16px;
+    background: white;
+    flex-wrap: wrap;
+  }
+  
+  .product-card img {
+    width: 211px;
+    height: 207px;
+    object-fit: contain;
+  }
+  
+  .info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+  }
+  
+  .old-price {
+    margin-top: 7px;
+    font-size: 12px;
+    text-decoration: line-through;
+  }
+  
+  .price {
+    font-size: 20px;
+    color: #518A70;
+    font-weight: bold;
+    margin: 8px 0;
+    display: flex;
+  }
+  
+  .pix {
+    color: black;
+    font-weight: normal;
+    margin-left: 5px;
+  }
+  
+  .installments {
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .bottom-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+  }
+  
+  .description {
+    margin-top: 5px;
+    font-size: 12px;
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .buy-btn {
+    background: #EBC172;
+    border: none;
+    padding: 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    max-width: 100%;
+  }
+  

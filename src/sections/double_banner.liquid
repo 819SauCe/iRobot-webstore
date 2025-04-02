@@ -1,0 +1,61 @@
+<div class='e-mosaic-banner'>
+
+    <div class='e-container'>
+        <div class='e-mosaic-banner__banner-list'>
+            {% for block in section.blocks %}
+                {% if block.type == 'mosaic_banner' %}
+                    {% if block.settings['mosaic_banner_image'] != blank %}
+                        <div class='e-mosaic-banner__banner-list--item'>
+                            <a href='{{ block.settings["mosaic_banner_link"] }}'>
+                                <img
+                                    src='{{ block.settings["mosaic_banner_image"].src | img_url: '1600x600' }}'
+                                    class='e-mosaic-banner__image'
+                                    alt='{{ block.settings["mosaic_banner_image"].alt }}'
+                                >
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    
+</div>
+
+{% schema %}
+    {
+        "name": "banner duplo",
+        "tag": "section",
+        "class": "e-mosaic-banner-section",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "mosaic_banner-configs",
+                "label": "Configurações do Banner"
+            }
+        ],
+        "blocks": [
+            {
+                "name": "Banner",
+                "type": "mosaic_banner",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "mosaic_banner_image",
+                        "label": "Imagem do Banner Desktop"
+                    },
+                    {
+                        "type": "url",
+                        "id": "mosaic_banner_link",
+                        "label": "Link do Banner"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Mosaico de Banners"
+            }
+        ]
+    }
+{% endschema %}

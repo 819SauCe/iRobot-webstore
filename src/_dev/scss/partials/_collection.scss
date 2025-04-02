@@ -1,0 +1,74 @@
+.filters-form {
+    display: flex;
+    gap: 92px;
+}
+
+#category, #feature, #price, #ordem {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    appearance: none;
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+#category {
+    margin-left: 24px;
+}
+
+#ordem {
+    margin-left: 750px;
+}
+
+.espaçamento-top-collection {
+    margin-top: 55px;
+}
+
+.pagination {
+    display: flex;
+    margin-left: 127%;
+}
+
+.pagination nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination nav ul li {
+    margin: 0 5px;
+}
+
+.pagination nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: #000000;
+    background-color: #EEEEEE;
+    border-radius: 5px;
+    font-size: 13px;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+}
+
+.pagination nav ul li.active a {
+    background-color: #EEEEEE;
+    color: #000;
+}
+
+.pagination nav ul li a:focus {
+    outline: none;
+}
+
+.pagination nav ul li:first-child a,
+.pagination nav ul li:last-child a {
+    font-size: 20px;
+    background-color: #000;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    color: #fff;
+    text-align: center;
+}

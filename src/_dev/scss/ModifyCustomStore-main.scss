@@ -2,3 +2,57 @@
 @use 'partials/slick';
 @use 'partials/header';
 @use 'partials/footer';
+@use 'partials/menu';
+@use 'partials/banner';
+@use 'partials/beneficios';
+@use 'partials/content_products';
+@use 'partials/message';
+@use 'partials/three_items';
+@use 'partials/double_banner';
+@use 'partials/most_selled';
+@use 'partials/review';
+@use 'partials/app';
+@use 'partials/awards-section';
+@use 'partials/contact-footer';
+@use 'partials/footer_part1';
+@use 'partials/footer_part2';
+@use 'partials/footer_part3';
+@use 'partials/collection';
+@use 'partials/perguntas-frequentes';
+@use 'partials/product-template';
+
+.slick-prev,
+.slick-next {
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #00000061;
+  background: gray;
+  position: absolute;
+  top: 97%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  padding: 0 15px;
+}
+
+.slick-prev {
+  left: 40%;
+}
+
+.slick-next {
+  right: 40%;
+}
+
+.slick-dots li button {
+  width: 30px;
+  height: 4px;
+  background: gray;
+  border: none;
+  border-radius: 2px;
+  margin: 0 4px;
+}
+
+.slick-dots li.slick-active button {
+  background: rgb(0, 0, 0);
+}

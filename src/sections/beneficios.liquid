@@ -1,0 +1,23 @@
+<div class="beneficios">
+<img src="{{ section.settings.image | image_url }}" alt="Imagem personalizada">
+</div>
+
+{% schema %}
+{
+  "name": "Imagem customizável",
+  "tag": "section",
+  "class": "custom-image-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Escolha uma imagem"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Imagem customizável"
+    }
+  ]
+}
+{% endschema %}

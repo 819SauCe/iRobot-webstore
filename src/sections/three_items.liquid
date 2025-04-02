@@ -1,0 +1,109 @@
+<div class="combo-section">
+  <div class="left-side">
+    <h2 class="title">{{ section.settings.title_1 }}</h2>
+    <h3 class="subtitle">{{ section.settings.subtitle_1 }}</h3>
+    <div class="product-grid">
+        {% for product in section.settings.collection.products limit: 3 %}
+      {% if produtos.size > 0 %}
+        <div class="product-card">
+          <img src="{{ produtos[0].featured_image | image_url }}" alt="{{ produtos[0].title }}">
+          <div class="info">
+            <h3>{{ produtos[0].title }}</h3>
+            <p class="description">{{ produtos[0].description | strip_html | truncate: 150 }}</p>
+            <p class="old-price">{{ produtos[0].compare_at_price | money }}</p>
+            <p class="price">{{ produtos[0].price | money }}<span class="pix"> via pix</span></p>
+            <p class="installments">Em até 6x de R$ 816,66 sem juros</p>
+          </div>
+          <div class="bottom-section">
+            {% if produtos[0].available %}
+              <button class="buy-btn">Comprar</button>
+            {% else %}
+              <button class="buy-btn" style="background-color: #DBDBDB;" disabled>Indisponível</button>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="right-side">
+    <h2 class="title1">{{ section.settings.title_2 }}</h2>
+    <h3 class="subtitle">{{ section.settings.subtitle_2 }}</h3>
+    <div class="product-grid">
+      {% if produtos.size > 1 %}
+        <div class="product-card">
+          <img src="{{ produtos[1].featured_image | image_url }}" alt="{{ produtos[1].title }}">
+          <div class="info">
+            <h3>{{ produtos[1].title }}</h3>
+            <p class="description">{{ produtos[1].description | strip_html | truncate: 150 }}</p>
+            <p class="old-price">{{ produtos[1].compare_at_price | money }}</p>
+            <p class="price">{{ produtos[1].price | money }}<span class="pix"> via pix</span></p>
+            <p class="installments">Em até 6x de R$ 816,66 sem juros</p>
+          </div>
+          <div class="bottom-section">
+            {% if produtos[1].available %}
+              <button class="buy-btn">Comprar</button>
+            {% else %}
+              <button class="buy-btn" style="background-color: #DBDBDB;" disabled>Indisponível</button>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+      {% if produtos.size > 2 %}
+        <div class="product-card">
+          <img src="{{ produtos[2].featured_image | image_url }}" alt="{{ produtos[2].title }}">
+          <div class="info">
+            <h3>{{ produtos[2].title }}</h3>
+            <p class="description">{{ produtos[2].description | strip_html | truncate: 150 }}</p>
+            <p class="old-price">{{ produtos[2].compare_at_price | money }}</p>
+            <p class="price">{{ produtos[2].price | money }}<span class="pix"> via pix</span></p>
+            <p class="installments">Em até 6x de R$ 816,66 sem juros</p>
+          </div>
+          <div class="bottom-section">
+            {% if produtos[2].available %}
+              <button class="buy-btn">Comprar</button>
+            {% else %}
+              <button class="buy-btn" style="background-color: #DBDBDB;" disabled>Indisponível</button>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "3 Items ou Combo",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Título Coluna 1"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_1",
+      "label": "Subtítulo Coluna 1"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Título Coluna 2"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_2",
+      "label": "Subtítulo Coluna 2"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Coleção"
+    }
+  ],
+  "presets": [{
+    "name": "3 Items ou Combo"
+  }]
+}
+{% endschema %}

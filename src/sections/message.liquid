@@ -1,0 +1,25 @@
+<div class="main" style="background-color: #447355;">
+    <div class="bloco-frases">
+        <h2>{{ section.settings.frase_principal }}</h2>
+        <br>
+        <a class="subfrase">{{ section.settings.subfrase }}</a>
+    </div>
+</div>
+
+{% schema %}
+    {
+      "name": "Frase e Subfrase",
+      "settings": [
+        {
+          "type": "text",
+          "id": "frase_principal",
+          "label": "Frase Principal"
+        },
+        {
+          "type": "text",
+          "id": "subfrase",
+          "label": "Subfrase"
+        }
+      ]
+    }
+    {% endschema %}

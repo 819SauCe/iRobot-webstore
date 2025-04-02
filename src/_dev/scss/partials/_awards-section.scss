@@ -1,0 +1,53 @@
+.principal {
+    margin-top: 100px;
+    justify-items: center;
+}
+
+.principal .subtitle32 {
+    margin-top: 24px;
+}
+
+.containers {
+    display: flex;
+    margin-top: 39px;
+    gap: 24px;
+  }
+  
+  .container,
+  .container-1,
+  .container-2 {
+    display: flex;
+    flex-direction: column;
+    width: 330px;
+    height: 301px;
+    border-radius: 24px;
+    box-shadow: 0 4px 13px rgba(0, 0, 0, 0.162);
+  }  
+
+.descrição {
+    width: 298px;
+    height: 112px;
+    font-size: 14px;
+    margin-left: 16px;
+    margin-top: 20px;
+}
+
+.containers img {
+    width: 60px;
+    height: 60px;
+    margin-top: 30px;
+    margin-left: 16px;
+}
+
+.avaliacao-robo {
+    color: #A5A5A5;
+    font-size: 12px;
+    margin-left: 17px;
+    margin-top: 10px;
+}
+
+.principal .containers h3 {
+    margin-left: 16px;
+    margin-top: 20px;
+    font-size: 16px;
+}

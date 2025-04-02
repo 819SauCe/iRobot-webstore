@@ -1,39 +1,68 @@
 <!doctype html>
 <html lang='{{ shop.locale }}'>
-    <head>
-        <meta charset='utf-8'>
-        <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
-        <meta name='theme-color' content='#D1784F'>
-        <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
-        <title>Minha Loja Shopify</title>
+  <head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <meta name='theme-color' content='#D1784F'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+    <title>Minha Loja Shopify</title>
 
-        {% if settings.favicon %}
-            <link rel='shortcut icon' href='{{ settings.favicon | img_url: ' 32x32' }}' type='image/png'>
-        {% endif %}
+    {% if settings.favicon %}
+      <link
+        rel='shortcut icon'
+        href='{{ settings.favicon | img_url: '32x32' }}'
+        type='image/png'>
+    {% endif %}
 
-        {% if page_description %}
-            <meta name='description' content='{{ page_description | escape }}'>
-        {% endif %}
+    {% if page_description %}
+      <meta name='description' content='{{ page_description | escape }}'>
+    {% endif %}
 
-        {% render 'styles__all-calls' %}
+    {% render 'styles__all-calls' %}
+    <script src="{{ 'jquery-3.7.1.slim.min.js' | asset_url }}"></script>
+    <script src="{{ 'slick.min.js' | asset_url }}"></script>
+    <script src="{{ 'ModifyCustomStore-general.js' | asset_url }}"></script>
+    {{ 'slick.css' | asset_url | stylesheet_tag }}
+    {{ 'slick-theme.css' | asset_url | stylesheet_tag }}
+    {{ content_for_header }}
+  </head>
 
-        <script src='{{ ' jquery-3.7.1.slim.min.js' | asset_url }}'></script>
-        <script src='{{ ' slick.min.js' | asset_url }}'></script>
+  <body
+    id='{{ page_title | handle }}'
+    class='template-{{ template.name | handle }} template-suffix-{{ template.suffix | handle }}'
+    data-template='{{ template.name | handle }}'
+    data-suffix='{{ template.suffix }}'>
 
-        {{ content_for_header }}
-    </head>
+    {% section 'header.liquid' %}
+    {% section 'menu.liquid' %}
 
-    <body
-        id='{{ page_title | handle }}'
-        class='template-{{ template.name | handle }} template-suffix-{{ template.suffix | handle }}'
-        data-template='{{ template.name | handle }}'
-        data-suffix='{{ template.suffix }}'
-    >
+    <main role='main' class='e-{{ template.name | handle }} {{ template.name | handle }} e-main-section'>
+      {% if template.name == 'collection' %}
+        {% section 'collection' %}
+        {% section 'perguntas-frequentes' %}
+      {% else %}
+        {{ content_for_layout }}
+        {% unless template.name == 'product' %}
+          {% section 'banner.liquid' %}
+          {% section 'beneficios.liquid' %}
+          {% section 'content_products' %}
+          {% section 'message' %}
+          {% section 'three_items' %}
+          {% section 'double_banner' %}
+          {% section 'most_selled' %}
+          {% section 'review' %}
+          {% section 'app' %}
+          {% section 'awards-section' %}
+        {% endunless %}
+      {% endif %}
 
-        <main role='main' class='e-{{ template.name | handle }} {{ template.name | handle }} e-main-section'>
-            {{ content_for_layout }}
-        </main>
+    </main>
 
-        {% render 'scripts__all-calls' %}
-    </body>
+    {% section 'contact-footer' %}
+    {% section 'footer_part1' %}
+    {% section 'footer_part2' %}
+    {% section 'footer_part3' %}
+
+    {% render 'scripts__all-calls' %}
+  </body>
 </html>

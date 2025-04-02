@@ -1,0 +1,155 @@
+*   {
+    padding: 0%;
+    margin: 0%;
+    border: 0%;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    height: 110;
+    }
+    
+a {
+    color: inherit;
+    text-decoration: none;
+    
+    &:visited {
+      color: inherit;
+    }
+    
+    &:hover,
+    &:focus,
+    &:active {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+.e-header__logo {
+    margin-top: 22px;
+    margin-left: 24px;
+}
+
+.e-searchBar {
+    margin-left: 30px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    max-width: 590px;
+    height: auto;
+}
+
+.e-searchBar input {
+    width: 590px;
+    height: 40px;
+}
+
+.e-searchBar input::placeholder {
+    padding-left: 16px;
+    color: #A0A0A0;
+}
+
+.search-product {
+    border-bottom: 1px solid rgb(171, 171, 171);
+    transition: background-color 0.3s ease;
+}
+
+.search-product:hover {
+    background-color: #d7d7d7;
+}
+
+.search-results {
+    background-color: #fff;
+    z-index: 9999;
+}
+
+.contato {
+    display: flex;
+    margin-left: 100px;
+}
+
+.contato a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+.contato img {
+    width: 24px;
+    height: 26.4;
+}
+
+.e-televendas {
+    display: flex;
+    margin-left: 60px;
+}
+
+.e-televendas a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.e-televendas img {
+    width: 19.57px;
+    height: 24px;
+}
+
+.e-login {
+    position: relative;
+    display: flex;
+    margin-left: 60px;
+    margin-top: 19px;
+}
+
+.e-login a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.e-login img {
+    width: 24px;
+    height: 27;
+}
+
+.login-textos, .televendas-textos {
+    display: flex;
+    flex-direction: column;
+  }  
+
+.login-dropdown {
+    display: none;
+    position: absolute;
+    font-size: 12px;
+    top: 110%;
+    right: 10%;
+    width: 144px;
+    height: 104px;
+    background-color: #fff;
+    box-shadow: -3px 4px 8px rgba(0,0,0,0.1);
+    padding: 10px;
+    z-index: 999;
+  }
+
+.login-dropdown a {
+    align-items: center;
+    justify-content: center;
+}
+  
+.e-login:hover .login-dropdown {
+    display: block;
+  }
+
+.small-transparent-button{
+    font-size: 8px;
+}
+
+.e-carrinho {
+    margin-left: 60px;
+    margin-top: 19px;
+}
+
+.normal-button {
+    font-size: 12px;
+}
