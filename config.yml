@@ -1,0 +1,5 @@
+development:
+    password: none
+    theme_id: null
+    store: null
+    directory: './build'
