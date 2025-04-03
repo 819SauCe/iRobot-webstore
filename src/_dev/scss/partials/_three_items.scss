@@ -29,7 +29,7 @@
     background-color: #9fb6a0;
   }
 
-  .title {
+  .title_three_combo {
     font-size: 36px;
     margin-top: 88px;
   }
@@ -38,25 +38,27 @@
     margin-top: 88px;
     font-size: 36px;
   }
-
-  .subtitle {
-    margin-top: 24px;
-  }
   
-  .title {
-    font-size: 24px;
+  .title_three_combo {
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
   }
   
   .subtitle {
+    margin-top: 24px;
     font-size: 16px;
     margin-bottom: 30px;
     font-weight: normal;
     text-align: center;
   }
   
+  .subtitle1 {
+    margin-top: 24px;
+    font-size: 16px;
+    margin-bottom: 30px;
+    font-weight: normal;
+  }
   
   .product-card {
     display: flex;

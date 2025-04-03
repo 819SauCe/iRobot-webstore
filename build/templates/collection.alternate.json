@@ -1,0 +1,9 @@
+{
+  "name": "Coleção com Paginação",
+  "sections": {
+    "main": {
+      "type": "collection-paginada"
+    }
+  },
+  "order": ["main"]
+}

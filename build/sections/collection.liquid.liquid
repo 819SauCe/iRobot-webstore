@@ -1,0 +1,75 @@
+<div class="e-collection">
+
+  <div class="e-collection__heading">
+    <div class="e-collection__heading--title">
+      {{ collection.title }}
+    </div>
+
+    <div class="e-collection__heading--breadcrumb">
+      <ul>
+        <li>
+          <a href="{{ routes.root_url }}">Home</a>
+        </li>
+        <li>
+          <a href="/collections">Coleções</a>
+        </li>
+        <li>{{ collection.title }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="e-container">
+
+    <div class="e-collection__ordeby">
+      <form method="get" id="sort-by">
+        <label for="sort">Ordenar por:</label>
+        <select name="sort_by" onchange="this.form.submit();">
+          <option
+            value="title-ascending"
+            {% if collection.sort_by == 'title-ascending' %}
+            selected{% endif %}>Nome: A-Z</option>
+          <option
+            value="title-descending"
+            {% if collection.sort_by == 'title-descending' %}
+            selected{% endif %}>Nome: Z-A</option>
+          <option
+            value="price-ascending"
+            {% if collection.sort_by == 'price-ascending' %}
+            selected{% endif %}>Preço: Menor ao Maior</option>
+          <option
+            value="price-descending"
+            {% if collection.sort_by == 'price-descending' %}
+            selected{% endif %}>Preço: Maior ao Menor</option>
+          <option
+            value="created-descending"
+            {% if collection.sort_by == 'created-descending' %}
+            selected{% endif %}>Mais recentes</option>
+          <option
+            value="created-ascending"
+            {% if collection.sort_by == 'created-ascending' %}
+            selected{% endif %}>Mais antigos</option>
+        </select>
+      </form>
+    </div>
+
+    <div class="e-collection__products">
+
+      {% paginate collection.products by 8 %}
+        <div class="e-collection__products--items">
+          {% for product in collection.products %}
+            {% render 'general__product-item'
+              , product: product %}
+          {% endfor %}
+        </div>
+
+        <div class="e-collection__products--pagination">
+          {% render 'general__pagination-collection'
+            , paginate: paginate %}
+        </div>
+      {% endpaginate %}
+
+    </div>
+
+  </div>
+
+</div>

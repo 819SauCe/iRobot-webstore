@@ -1,0 +1,83 @@
+{% assign product_list = section.settings['products_shelf-collection'].products %}
+{% assign redirectlink = section.settings['products_shelf-custom_link'] %}
+
+{% if section.settings['products_shelf-title'] != blank %}
+  {% assign titleSectionUncase = section.settings['products_shelf-title'] %}
+{% endif %}
+
+{% assign products_qtda_list = section.settings.products_qtda_list %}
+
+{% if redirectlink == blank %}
+  {% assign redirectlink = '/collections/all' %}
+{% endif %}
+
+<div class='e-products-shelf' id='{{ titleSectionUncase | replace: ' ', '-' | downcase }}'>
+  <div class='e-products-shelf__container'>
+    <div class='e-products-shelf__container--header'>
+      {% if section.settings['products_shelf-title'] != blank %}
+        <h2 class='e-products-shelf__container--header-title'>
+          {{ section.settings['products_shelf-title'] }}
+        </h2>
+      {% endif %}
+    </div>
+
+    <div class='e-products-shelf__container--products-list'>
+      {% for product in product_list limit: products_qtda_list %}
+        {% render 'general__product-item'
+          , product: product %}
+      {% endfor %}
+    </div>
+
+    <div class="e-products-shelf__container--link">
+      <a href='{{ redirectlink }}'>
+        <span>
+          {% if section.settings['products_shelf-title-of-link'] != blank %}
+            {{ section.settings['products_shelf-title-of-link'] }}
+          {%- else %}
+            ver todos os produtos
+          {% endif %}
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Vitrine de Produtos",
+    "tag": "section",
+    "class": "e-products-shelf-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "products_shelf-title",
+        "label": "Título da Coleção de Produtos"
+      },
+      {
+        "type": "collection",
+        "id": "products_shelf-collection",
+        "label": "Coleção de Produtos"
+      },
+      {
+        "type": "text",
+        "id": "products_shelf-title-of-link",
+        "label": "Título do Link da Coleção de Produtos"
+      },
+      {
+        "type": "url",
+        "id": "products_shelf-custom_link",
+        "label": "Link Customizado da Lista de Produtos"
+      }, {
+        "type": "number",
+        "id": "products_qtda_list",
+        "label": "Quantidade de Produtos",
+        "default": 16
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vitrine de Produtos"
+      }
+    ]
+  }
+{% endschema %}

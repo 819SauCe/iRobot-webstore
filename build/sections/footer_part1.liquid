@@ -1,0 +1,23 @@
+<div class="e-footer-part-1">
+  <div class="e-header__logo">
+    <a href="{{ routes.root_url }}">
+      {% if settings.logo != blank %}
+        <img src="{{ settings.logo | img_url: 'medium' }}" alt="{{ shop.name }}">
+      {% else %}
+        <span>{{ shop.name }}</span>
+      {% endif %}
+    </a>
+  </div>
+
+  <div class="social-media">
+    <div class="facebook">
+      <a href="{{ settings.link_facebook }}"><img src="{{ settings.icone_facebook | img_url: '32x32' }}" alt="facebook_icon"></a>
+    </div>
+    <div class="facebook">
+      <a href="{{ settings.link_instagram }}"><img src="{{ settings.icone_instagram | img_url: '32x32' }}" alt="instagram_icon"></a>
+    </div>
+    <div class="facebook">
+      <a href="{{ settings.link_youtube }}"><img src="{{ settings.icone_youtube | img_url: '32x32' }}" alt="youtube_icon"></a>
+    </div>
+  </div>
+</div>

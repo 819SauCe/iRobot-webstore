@@ -1,0 +1,76 @@
+<div class="principal">
+  <h2>{{ section.settings.title }}</h2>
+  <p class="subtitle32">{{ section.settings.subtitle }}</p>
+
+  <div class="containers">
+    <div class="container">
+      <img src="{{ settings.img_awards | image_url: width: 32 }}" alt="img_awards">
+      <h3>{{ section.settings.container-tittle1 }}</h3>
+      <p class="avaliacao-robo">Avaliação do robô Roomba Combo® Essential</p>
+      <div class="descrição">{{ section.settings.description1 }}</div>
+    </div>
+
+    <div class="container-1">
+      <img src="{{ settings.img_awards1 | image_url: width: 32 }}" alt="img_awards">
+      <h3>{{ section.settings.container-tittle2 }}</h3>
+      <p class="avaliacao-robo">Avaliação do robô Roomba Combo® Essential</p>
+      <div class="descrição">{{ section.settings.description2 }}</div>
+    </div>
+
+    <div class="container-2">
+      <img src="{{ settings.img_awards2 | image_url: width: 32 }}" alt="img_awards">
+      <h3>{{ section.settings.container-tittle3 }}</h3>
+      <p class="avaliacao-robo">Avaliação do robô Roomba Combo® Essential</p>
+      <div class="descrição">{{ section.settings.description3 }}</div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "avaliable",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Título"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtítulo"
+      },
+      {
+        "type": "text",
+        "id": "container-tittle1",
+        "label": "user 1"
+      },
+      {
+        "type": "textarea",
+        "id": "description1",
+        "label": "Descrição1"
+      }, {
+        "type": "text",
+        "id": "container-tittle2",
+        "label": "user 2"
+      }, {
+        "type": "textarea",
+        "id": "description2",
+        "label": "Descrição2"
+      }, {
+        "type": "text",
+        "id": "container-tittle3",
+        "label": "user 3"
+      }, {
+        "type": "textarea",
+        "id": "description3",
+        "label": "Descrição3"
+      }
+    ],
+    "presets": [
+      {
+        "name": "avaliable"
+      }
+    ]
+  }
+{% endschema %}

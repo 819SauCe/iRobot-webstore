@@ -1,0 +1,23 @@
+<div class="vitrine">
+  <h1>{{ collection.title }}</h1>
+
+  {% paginate collection.products by 9 %}
+    <div class="product-grid">
+      {% for product in paginate.items %}
+        <div class="product-card">
+          <h3>{{ product.title }}</h3>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="pagination">
+      {% for part in paginate.parts %}
+        {% if part.is_link %}
+          <a href="{{ part.url }}">{{ part.title }}</a>
+        {% else %}
+          <span class="active">{{ part.title }}</span>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endpaginate %}
+</div>

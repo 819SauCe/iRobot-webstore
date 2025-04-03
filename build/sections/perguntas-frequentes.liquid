@@ -1,0 +1,98 @@
+<h2 class="title-faq" style="text-align: center; margin-top: 37px">{{ section.settings.titulo_faq }}</h2>
+
+<div class="faq-container">
+  {% for i in (1..5) %}
+    {% assign pergunta_key = 'pergunta_' | append: i %}
+    {% assign resposta_key = 'resposta_pergunta_' | append: i %}
+
+    <div class="faq-item">
+      <div class="faq-header">
+        <h4 class="pergunta">{{ section.settings[pergunta_key] }}</h4>
+        <span class="toggle">▽</span>
+      </div>
+      <div class="faq-content">
+        <p>{{ section.settings[resposta_key] }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "name": "FAQ Expandível",
+    "settings": [
+      {
+        "type": "text",
+        "id": "pergunta_1",
+        "label": "Texto da Pergunta 1"
+      },
+      {
+        "type": "textarea",
+        "id": "resposta_pergunta_1",
+        "label": "Texto da Resposta 1"
+      },
+      {
+        "type": "text",
+        "id": "pergunta_2",
+        "label": "Texto da Pergunta 2"
+      },
+      {
+        "type": "textarea",
+        "id": "resposta_pergunta_2",
+        "label": "Texto da Resposta 2"
+      }, {
+        "type": "text",
+        "id": "pergunta_3",
+        "label": "Texto da Pergunta 3"
+      }, {
+        "type": "textarea",
+        "id": "resposta_pergunta_3",
+        "label": "Texto da Resposta 3"
+      }, {
+        "type": "text",
+        "id": "pergunta_4",
+        "label": "Texto da Pergunta 4"
+      }, {
+        "type": "textarea",
+        "id": "resposta_pergunta_4",
+        "label": "Texto da Resposta 4"
+      }, {
+        "type": "text",
+        "id": "pergunta_5",
+        "label": "Texto da Pergunta 5"
+      }, {
+        "type": "textarea",
+        "id": "resposta_pergunta_5",
+        "label": "Texto da Resposta 5"
+      }, {
+        "type": "text",
+        "id": "titulo_faq",
+        "label": "Título",
+        "default": "titulo_faq"
+      }
+    ],
+    "presets": [
+      {
+        "name": "FAQ Expandível"
+      }
+    ]
+  }
+{% endschema %}
+
+<script>
+  const faqHeaders = document.querySelectorAll('.faq-header');
+  faqHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const content = header.nextElementSibling;
+      const toggle = header.querySelector('.toggle');
+  
+      if (content.style.display === 'block') {
+        content.style.display = 'none';
+        toggle.textContent = '▽';
+      } else {
+        content.style.display = 'block';
+        toggle.textContent = '▲';
+      }
+    });
+  });
+</script>

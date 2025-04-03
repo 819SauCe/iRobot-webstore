@@ -1,0 +1,16 @@
+<div class="menu-loja">
+  <nav>
+    <ul>
+      {% for link in linklists.main-menu.links %}
+        <li>
+        <a href="{{ link.url }}">
+            {{ link.title }}
+            {% unless forloop.last %}
+            <img src="{{ settings.seta_baixo | img_url: '32x32' }}" alt="seta_baixo">
+            {% endunless %}
+        </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</div>

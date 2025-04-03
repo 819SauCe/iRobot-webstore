@@ -1,0 +1,15 @@
+{% layout 'theme' %}
+
+<h1>{{ collection.title }}</h1>
+
+{% paginate collection.products by 9 %}
+  <div class="product-grid">
+    {% for product in paginate.items %}
+      <div class="product-card">
+        <h3>{{ product.title }}</h3>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% render 'pagination' %}
+{% endpaginate %}

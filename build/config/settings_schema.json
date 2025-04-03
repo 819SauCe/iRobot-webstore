@@ -1,0 +1,111 @@
+[
+    {
+        "name": "theme_info",
+        "theme_name": "Custom Theme",
+        "theme_author": "Robson Santana",
+        "theme_version": "1.0.0",
+        "theme_documentation_url": "https://github.com/robsonss/meu-tema-shopify",
+        "theme_support_email": "robsonsantana20@gmail.com"
+    },
+    {
+        "name": "General",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Favicon"
+            },
+            {
+                "type": "image_picker",
+                "id": "favicon",
+                "label": "Imagem do Favicon",
+                "info": "Será redimensionado para 32 x 32px"
+            },
+            {
+                "type": "image_picker",
+                "id": "logo",
+                "label": "Logo da Loja",
+                "info": "Adicione a logo do Header da loja"
+            },
+            {
+                "type": "image_picker",
+                "id": "icone_busca",
+                "label": "Ícone de Busca"
+            },
+            {
+                "type": "image_picker",
+                "id": "icone_telefone",
+                "label": "Ícone Telefone"
+            },
+            {
+                "type": "image_picker",
+                "id": "icone_fale_conosco",
+                "label": "Ícone Fale Conosco"
+            },
+            {
+                "type": "image_picker",
+                "id": "icone_login",
+                "label": "Ícone login"
+            },
+            {
+                "type": "image_picker",
+                "id": "icone_carrinho",
+                "label": "Ícone carrinho"
+            },
+            {
+                "type": "image_picker",
+                "id": "seta_baixo",
+                "label": "seta para baixo"
+            },
+            {
+                "type": "image_picker",
+                "id": "icone-pet",
+                "label": "Ícone Ideal para Pet"
+            },
+            {
+                "type": "image_picker",
+                "id": "img_awards",
+                "label": "img_awards"
+            },
+            {
+                "type": "image_picker",
+                "id": "img_awards1",
+                "label": "img_awards1"
+            },
+            {
+                "type": "image_picker",
+                "id": "img_awards2",
+                "label": "img_awards2"
+            },
+            {
+                "type": "image_picker",
+                "id": "icone_facebook",
+                "label": "icone_facebook"
+            },
+            {
+                "type": "image_picker",
+                "id": "icone_instagram",
+                "label": "icone_instagram"
+            },
+            {
+                "type": "image_picker",
+                "id": "icone_youtube",
+                "label": "icone_youtube"
+            },
+            {
+                "type": "url",
+                "id": "link_facebook",
+                "label": "Link do Facebook"
+            },
+            {
+                "type": "url",
+                "id": "link_instagram",
+                "label": "Link do Instagram"
+            },
+            {
+                "type": "url",
+                "id": "link_youtube",
+                "label": "Link do YouTube"
+            }
+        ]
+    }
+]

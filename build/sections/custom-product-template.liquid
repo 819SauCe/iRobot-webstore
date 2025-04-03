@@ -1,0 +1,9 @@
+<!-- custom-product-template.liquid -->
+<div class="custom-product">
+  <h1>{{ product.title }}</h1>
+  <p>{{ product.description }}</p>
+  <div class="product-price">
+    <span>{{ product.price | money }}</span>
+  </div>
+  <button class="buy-button" onclick="window.location.href='{{ product.url }}'">Comprar</button>
+</div>

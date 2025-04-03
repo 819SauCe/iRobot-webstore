@@ -1,0 +1,25 @@
+{% if paginate.pages > 1 %}
+  <div class='e-pagination'>
+      <ul>
+          {% if paginate.previous.is_link %}
+              <li><a class='e-pagination__arrow--previous' href='{{ paginate.previous.url }}' aria-label='página anterior'><-</a></li>
+          {% endif %}
+
+          {% for part in paginate.parts %}
+              {% if part.is_link %}
+                  <li><a class='e-pagination__page' href='{{ part.url }}' aria-label='página {{ part.title }}'>{{- part.title }}</a></li>
+              {% else %}
+                  {% if part.title == paginate.current_page %}
+                      <li class="e-active"><span class='e-pagination__page'>{{- part.title -}}</span></li>
+                  {% else %}
+                      <li><span class='e-pagination__item'>{{- part.title -}}</span></li>
+                  {% endif %}
+              {% endif %}
+          {% endfor %}
+
+          {% if paginate.next.is_link %}
+              <li><a class='e-pagination__arrow--next' href='{{ paginate.next.url }}' aria-label='próxima página'>-></a></li>
+          {% endif %}
+      </ul>
+  </div>
+{% endif %}

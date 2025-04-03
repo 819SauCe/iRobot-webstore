@@ -1,0 +1,35 @@
+<div
+  class="product-card"
+  onclick="window.location.href='{{ product.url }}'"
+  style="cursor: pointer;">
+  <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}">
+  <div class="info">
+    <h3>{{ product.title }}</h3>
+    <p class="description">{{ product.description | strip_html | truncate: 150 }}</p>
+    {% if product.compare_at_price > product.price %}
+      <p class="old-price">{{ product.compare_at_price | money }}</p>
+    {% endif %}
+    <p class="price">{{ product.price | money }}<span class="pix">
+        via pix</span>
+    </p>
+    <p class="installments">Em até 6x de R$ 816,66 sem juros</p>
+  </div>
+  <div class="bottom-section">
+    {% if product.available %}
+      <button class="buy-btn">
+        <a href="{{ product.url }}">Comprar</a>
+      </button>
+    {% else %}
+      <button
+        class="buy-btn"
+        style="background-color: #DBDBDB; cursor: not-allowed;"
+        disabled>Indisponível</button>
+    {% endif %}
+    <div class="extra-info">
+      <img
+        src="{{ 'ideal_pet.png' | asset_url }}"
+        alt="Ícone Pet"
+        class="icon-pet">IDEAL PARA PET
+    </div>
+  </div>
+</div>
