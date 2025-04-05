@@ -1,3 +1,79 @@
+{% schema %}
+  {
+    "name": "Product Template",
+    "settings": [
+      {
+        "type": "text",
+        "id": "custom_title",
+        "label": "Título Personalizado",
+        "default": "2 em 1 - aspirador & passa pano"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_description",
+        "label": "Descrição Personalizada",
+        "default": "Ideal para você"
+      },
+      {
+        "type": "image_picker",
+        "id": "custom_image",
+        "label": "Imagem Personalizada"
+      },
+      {
+        "type": "url",
+        "id": "custom_link",
+        "label": "Link do Banner"
+      }, {
+        "type": "checkbox",
+        "id": "main_banner-configs",
+        "label": "Configurações do Banner"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product_banner",
+        "name": "Banner do Produto",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "banner_image",
+            "label": "Imagem do Banner"
+          }, {
+            "type": "text",
+            "id": "banner_text",
+            "label": "Texto do Banner"
+          }, {
+            "type": "url",
+            "id": "banner_link",
+            "label": "Link do Banner"
+          }
+        ]
+      }, {
+        "type": "main_banner",
+        "name": "Main Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "main_banner-image-desktop",
+            "label": "Imagem do Banner Desktop"
+          }, {
+            "type": "image_picker",
+            "id": "main_banner-image-mobile",
+            "label": "Imagem do Banner Mobile"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Template",
+        "category": "Product"
+      }
+    ]
+  }
+{% endschema %}
+
+
 <div class="product-page">
   <div class="product-thumbnails">
     {% for image in product.images limit: 3 %}
@@ -35,7 +111,8 @@
       <p id="installments-text"></p>
     </div>
 
-    <button class="buy-button" onclick="addToCart({{ product.id }}, 1)">Comprar</button>
+    <button class="buy-button" onclick="addToCart({{ product.variants.first.id }}, 1)">Comprar</button>
+
 
     <div class="bagaço-do-frete">
       <label for="cep">Calcular Frete:</label>
@@ -50,56 +127,86 @@
   </div>
 </div>
 
-
 <div class="product-banners-final">
-  {% assign last_images = product.images | slice: -5 %}
-  {% for image in last_images %}
+  {% assign last_two = product.images | slice: -2 %}
+  {% assign first_one = product.images | slice: 0, 1 %}
+  {% assign custom_images = last_two | concat: first_one %}
+
+  {% for image in custom_images %}
     {% if image != blank %}
-      <div class="product-apresentation">
-        <img src="{{ image | image_url }}" alt="{{ product.title }}">
-        {% case forloop.index %}
-          {% when 1 %}
-            <p>Frase Genérica para a primeira imagem.</p>
-          {% when 2 %}
-            <p>Frase Genérica para a segunda imagem.</p>
-          {% when 3 %}
-            <p>Frase Genérica para a terceira imagem.</p>
-        {% endcase %}
+      {% if forloop.last %}
+      {% endif %}
+
+      <div class="product-apresentation" style="width: 100%; height: 754px; {% if forloop.last %}background-color: #87A28E; display: flex; align-items: center; justify-content: center;{% endif %}">
+
+        <div style="text-align: center; padding: 50px 0;">
+          <h2 style="font-size: 32px; color: #2D4739;">Conheça o produto em detalhes</h2>
+          <p style="color: #4B6A5C;">Veja como ele pode facilitar o seu dia a dia</p>
+        </div>
+
+        <img
+          src="{{ image | image_url }}"
+          alt="{{ product.title }}"
+          style="border-radius: 24px; width: 522px; height: 597px; {% if forloop.last %}margin-top: 0;{% else %}margin-top: 200px;{% endif %}">
+        {% if forloop.last == false %}
+          <p>Ideal para você</p>
+        {% endif %}
       </div>
     {% endif %}
   {% endfor %}
+</div>
 
-  <div class="ideal_para_você_title">
-    <h2>2 em 1 - aspirador & passa pano</h2>
+{% for block in section.blocks %}
+  {% if block.type == 'main_banner' %}
+    {% if block.settings['main_banner-image-desktop'] != blank %}
+      <div class='e-main-banner__banner-list--item'>
+        <img
+          src='{{ block.settings["main_banner-image-desktop"] | img_url: "1600x600" }}'
+          class='e-main-banner__image'
+          alt='{{ block.settings["main_banner-image-desktop"].alt }}'>
+      </div>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<div class="ideal_para_você_title">
+  <h2 style="margin-top:100px; text-align:center; font-size:36px;">Ideal para você</h2>
+  <p style="margin-top:50px; margin-left:232px; color: #447355; font-size: 20px; border-bottom:1px solid #447355; width: 70%; margin-bottom: 22px">2 em 1 - aspirador & passa pano</p>
+</div>
+
+<div style="display: grid; grid-template-columns: 200px auto; align-items: start; gap: 10px;">
+  <div style="display: grid; grid-template-rows: repeat(17, 29.11px); gap: 3px; margin-top: 120px; margin-left: 40px;">
+    {% assign caracteristicas = "Tipo de Passa pano,Padrão,Limpeza de cantos,Limpa em fileiras organizadas,Aceita vários tipos de piso,Aceita comando de voz,Sugestões personalizadas,Escovas duplas de borracha,Recarga e retoma,Eliminação automática de sujeira,Limpa por cômodo,Limpar por zona ou objeto,Definir zonas sem passar o pano,Reconhece e evita obstáculos,Automaticamente evita esfregar carpete,Limpeza 2X mais profunda com Smart S,Limpa automaticamente os quartos mais" | split: "," %}
+    {% for tag in caracteristicas %}
+      <div style="font-size: 12px; height: 29.11px; display: flex; align-items: center;">
+        {{ tag }}
+      </div>
+    {% endfor %}
   </div>
-  <div class="ideal_para_você">
-    {% assign handles = "roomba-combo-essential-v,roomba-i5,roomba-i5-plus,roomba-j5,roomba-combo-j7,roomba-combo-j7-plus,roomba-combo-essential-g,roomba-j7,roomba-j7-plus,produto-10,produto-11" | split: "," %}
-    {% for handle in handles %}
-      {% assign prod = all_products[handle] %}
+
+  <div style="display: flex; gap: 10px;">
+    {% for block in section.blocks %}
+      {% assign prod_url = block.settings.banner_link %}
+      {% assign produto_handle = prod_url | split: '/' | last %}
+      {% assign prod = all_products[produto_handle] %}
       {% if prod %}
-        {% assign index = forloop.index %}
-        {% assign key = "imagem_" | append: index %}
-        {% assign imagem_dinamica = section.settings[key] %}
-        <div class="ideal_para_você_containers">
-          <a href="{{ prod.url }}">
-            {% if imagem_dinamica %}
-              <img src="{{ imagem_dinamica | image_url }}" alt="Imagem dinâmica {{ index }}">
-            {% else %}
-              <img src="{{ 'placeholder.png' | asset_url }}" alt="Sem imagem">
-            {% endif %}
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <a
+            class="link-redirect-product"
+            href="{{ prod.url }}"
+            style="display: flex; justify-content: center; align-items: center;">
+            <img
+              class="imagem-a-display"
+              src="{{ block.settings.banner_image | image_url }}"
+              style="width: 76.74px; height: 76.74px; object-fit: cover;">
           </a>
-          <a href="{{ prod.url }}">{{ prod.title }}</a>
-          <div class="ideal_small_containers">
-            {% assign linhas = (1..20) %}
-            {% for j in linhas %}
-              {% if j == 1 %}
-                <div class="small_small_container_ideal_green"><p>Reservatório<br>Hibrido</p></div>
-              {% elsif j == 2 %}
-                <div class="small_small_container_ideal_green"><p>Padrão</p></div>
-              {% elsif j > 2 and j <= 14 %}
-                <div class="small_small_container_ideal_green"><p>✔</p></div>
+          <div class="item-product-text-title">{{ block.settings.banner_text }}</div>
+          <div style="display: grid; grid-template-rows: repeat(17, 29.11px); gap: 3px;">
+            {% for tag in caracteristicas %}
+              {% if prod.tags contains tag %}
+                <div class="small_small_container_ideal_green"></div>
               {% else %}
-                <div class="small_small_container_ideal_not_green"><p> </p></div>
+                <div class="small_small_container_ideal_not_green"></div>
               {% endif %}
             {% endfor %}
           </div>
@@ -107,6 +214,7 @@
       {% endif %}
     {% endfor %}
   </div>
+</div>
 
 <script>
   var productPrice = {{ product.price | divided_by: 100 }};

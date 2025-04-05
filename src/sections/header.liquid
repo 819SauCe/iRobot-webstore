@@ -80,7 +80,12 @@
   const res = await fetch('/cart.js');
   const data = await res.json();
   document.getElementById('cart-count').textContent = data.item_count;
-  document.getElementById('cart-total').textContent = (data.total_price / 100).toLocaleString('pt-BR', {style:'currency',currency:'BRL'});
+  if (document.getElementById('cart-total')) {
+    document.getElementById('cart-total').textContent = (data.total_price / 100).toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+  }
   }
   
   document.addEventListener('DOMContentLoaded', updateMiniCart);
@@ -107,4 +112,33 @@
     </div>
   `).join('');
   });
+  
+  function addToCart(productId, quantity) {
+  const data = {
+    items: [{
+      id: productId,
+      quantity: quantity
+    }]
+  };
+  
+  fetch('/cart/add.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    if (!response.ok) throw response;
+    return response.json();
+  })
+  .then(data => {
+    document.dispatchEvent(new Event('cart:refresh'));
+    updateMiniCart();
+  })
+  .catch(async (error) => {
+    const text = await error.text?.();
+    console.error('Erro ao adicionar ao carrinho:', text || error);
+  });
+  }
 </script>

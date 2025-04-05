@@ -731,6 +731,19 @@ a:hover, a:focus, a:active {
   cursor: pointer;
   width: 100%;
   max-width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
+  text-align: center;
 }
 
 .extra-info {
@@ -1949,6 +1962,10 @@ ul.list-atendimento {
   gap: 10px;
   overflow-x: auto;
   width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
 }
 
 .ideal_para_você_containers {
@@ -1959,7 +1976,72 @@ ul.list-atendimento {
 .ideal_small_containers {
   display: grid;
   grid-template-rows: repeat(20, auto);
-  gap: 3px;
+  gap: 10px;
+}
+
+.link-redirect-product {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  text-decoration: none;
+  outline: none;
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+  color: white !important;
+  width: 98px;
+  height: 85px;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  border: 1px solid #007D54;
+  margin-bottom: 3px;
+}
+
+.link-redirect-product:hover, .link-redirect-product:focus, .link-redirect-product:active, .link-redirect-product:visited {
+  text-decoration: none;
+  outline: none;
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+  color: white !important;
+}
+
+.item-product-text-title {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  font-size: 9.71px;
+  background-color: #00B750;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
+  width: 94.12px;
+  height: 29.11px;
+  margin-bottom: 9.2px;
+  text-decoration: none;
+  outline: none;
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+  color: white !important;
+  margin-top: 5px;
+}
+
+.item-product-text-title:hover, .item-product-text-title:focus, .item-product-text-title:active, .item-product-text-title:visited {
+  text-decoration: none;
+  outline: none;
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+  color: white !important;
 }
 
 .small_small_container_ideal_green {
@@ -1982,11 +2064,23 @@ ul.list-atendimento {
   width: 94.12px;
   height: 29.11px;
 }
+.small_small_container_ideal_green::after {
+  content: "✔";
+}
+.small_small_container_ideal_green * {
+  display: none;
+}
 
 .small_small_container_ideal_not_green {
   background-color: #A6D6B8;
   width: 94.12px;
   height: 29.11px;
+}
+.small_small_container_ideal_not_green::after {
+  content: none;
+}
+.small_small_container_ideal_not_green * {
+  display: none;
 }
 
 .slick-prev,
