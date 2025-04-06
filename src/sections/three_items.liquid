@@ -21,7 +21,7 @@
           </div>
           <div class="bottom-section">
             {% if produto_esquerda.available %}
-              <button class="buy-btn">Comprar</button>
+              <a href="{{ produto_esquerda.url }}" class="buy-btn">Comprar</a>
             {% else %}
               <button
                 class="buy-btn"
@@ -55,7 +55,7 @@
           </div>
           <div class="bottom-section">
             {% if produto_direita_1.available %}
-              <button class="buy-btn">Comprar</button>
+              <a href="{{ produto_direita_1.url }}" class="buy-btn">Comprar</a>
             {% else %}
               <button
                 class="buy-btn"
@@ -80,7 +80,7 @@
           </div>
           <div class="bottom-section">
             {% if produto_direita_2.available %}
-              <button class="buy-btn">Comprar</button>
+              <a href="{{ produto_direita_2.url }}" class="buy-btn">Comprar</a>
             {% else %}
               <button
                 class="buy-btn"

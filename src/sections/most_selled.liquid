@@ -17,7 +17,7 @@
         </div>
         <div class="bottom-section">
           {% if product.available %}
-            <button class="buy-btn">Comprar</button>
+            <a href="{{ product.url }}" class="buy-btn">Comprar</a>
           {% else %}
             <button
               class="buy-btn"

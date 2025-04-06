@@ -1,5 +1,5 @@
 development:
-    password: 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
+    password: 
     theme_id: 148866105593
     store: loja-wicomm-robson.myshopify.com
     directory: './build'

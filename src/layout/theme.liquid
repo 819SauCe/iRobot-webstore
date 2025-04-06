@@ -39,7 +39,6 @@
     <main role='main' class='e-{{ template.name | handle }} {{ template.name | handle }} e-main-section'>
       {% if template.name == 'collection' %}
         {% section 'collection' %}
-        {% section 'product-template' %}
       {% else %}
         {{ content_for_layout }}
         {% unless template.name == 'product' %}

@@ -225,3 +225,43 @@
       display: none;
     }
   }
+
+  .item_imagem_ideal_opção_container{
+    display: flex !important;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .item_imagem_ideal_opção {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 330px;
+  }
+
+  .product-info-ideal-vc-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .opcoes {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .opcoes select {
+    width: 330px;
+    height: 40px;
+    gap: 24px;
+    border-radius: 70px;
+    border: 1px solid #E0E0E0;
+    font-weight: bold;
+  } 

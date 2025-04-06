@@ -27,6 +27,10 @@
         "type": "checkbox",
         "id": "main_banner-configs",
         "label": "Configurações do Banner"
+      }, {
+        "type": "product",
+        "id": "produto_dinamico",
+        "label": "Produto Dinâmico"
       }
     ],
     "blocks": [
@@ -62,7 +66,41 @@
             "label": "Imagem do Banner Mobile"
           }
         ]
+      }, {
+        "type": "ideal_roomba",
+        "name": "Comparador Roomba",
+        "settings": [
+          {
+            "type": "text",
+            "id": "custom_title_ideal_vc_2",
+            "label": "Título Personalizado ideal",
+            "default": "Qual Roomba® é o ideal para você?"
+          },
+          {
+            "type": "collection",
+            "id": "produto_dinamico",
+            "label": "Produto Dinâmico"
+          },
+          {
+            "type": "text",
+            "id": "escolha_o_ideal_1",
+            "label": "Escolha o ideal",
+            "default": "Escolha o ideal"
+          },
+          {
+            "type": "text",
+            "id": "escolha_o_ideal_2",
+            "label": "Escolha o ideal",
+            "default": "Escolha o ideal"
+          }, {
+            "type": "text",
+            "id": "escolha_o_ideal_3",
+            "label": "Escolha o ideal",
+            "default": "Escolha o ideal"
+          }
+        ]
       }
+
     ],
     "presets": [
       {
@@ -72,7 +110,6 @@
     ]
   }
 {% endschema %}
-
 
 <div class="product-page">
   <div class="product-thumbnails">
@@ -186,35 +223,110 @@
 
   <div style="display: flex; gap: 10px;">
     {% for block in section.blocks %}
-      {% assign prod_url = block.settings.banner_link %}
-      {% assign produto_handle = prod_url | split: '/' | last %}
-      {% assign prod = all_products[produto_handle] %}
-      {% if prod %}
-        <div style="display: flex; flex-direction: column; align-items: center;">
-          <a
-            class="link-redirect-product"
-            href="{{ prod.url }}"
-            style="display: flex; justify-content: center; align-items: center;">
-            <img
-              class="imagem-a-display"
-              src="{{ block.settings.banner_image | image_url }}"
-              style="width: 76.74px; height: 76.74px; object-fit: cover;">
-          </a>
-          <div class="item-product-text-title">{{ block.settings.banner_text }}</div>
-          <div style="display: grid; grid-template-rows: repeat(17, 29.11px); gap: 3px;">
-            {% for tag in caracteristicas %}
-              {% if prod.tags contains tag %}
-                <div class="small_small_container_ideal_green"></div>
-              {% else %}
-                <div class="small_small_container_ideal_not_green"></div>
-              {% endif %}
-            {% endfor %}
+      {% if block.type == 'product_banner' %}
+        {% assign prod_url = block.settings.banner_link %}
+        {% assign produto_handle = prod_url | split: '/' | last %}
+        {% assign prod = all_products[produto_handle] %}
+        {% if prod %}
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <a
+              class="link-redirect-product"
+              href="{{ prod.url }}"
+              style="display: flex; justify-content: center; align-items: center;">
+              <img
+                class="imagem-a-display"
+                src="{{ block.settings.banner_image | image_url }}"
+                style="width: 76.74px; height: 76.74px; object-fit: cover;">
+            </a>
+            <div class="item-product-text-title">{{ block.settings.banner_text }}</div>
+            <div style="display: grid; grid-template-rows: repeat(17, 29.11px); gap: 3px;">
+              {% for tag in caracteristicas %}
+                {% if prod.tags contains tag %}
+                  <div class="small_small_container_ideal_green"></div>
+                {% else %}
+                  <div class="small_small_container_ideal_not_green"></div>
+                {% endif %}
+              {% endfor %}
+            </div>
           </div>
-        </div>
+        {% endif %}
       {% endif %}
     {% endfor %}
   </div>
 </div>
+
+{% for block in section.blocks %}
+  {% if block.type == 'ideal_roomba' %}
+    <div class="ideal_para_vc_2">
+      <h2 style="margin-top:100px; margin-bottom: 40px; text-align:center; font-size:36px;">
+        {{ block.settings.custom_title_ideal_vc_2 }}
+      </h2>
+
+      <div class="opcoes" style="display: flex;">
+        {% for i in (0..2) %}
+          <select name="opcao_{{ i }}" data-index="{{ i }}">
+            <option
+              value=""
+              disabled
+              selected>Selecione uma opção</option>
+            <option value="None">nenhum</option>
+            {% for tag in caracteristicas %}
+              <option value="{{ tag }}">{{ tag }}</option>
+            {% endfor %}
+          </select>
+        {% endfor %}
+      </div>
+
+      {% assign collection = collections[block.settings.produto_dinamico] %}
+      {% assign max_items = 3 %}
+      {% assign shown = 0 %}
+
+      <div class="item_imagem_ideal_opção_container">
+        {% for produto in collection.products %}
+          {% if shown < max_items and produto.tags.size > 0 %}
+            <div
+              class="item_imagem_ideal_opção"
+              data-tags="{{ produto.tags | join: ',' }}"
+              data-index="{{ shown }}">
+              <a href="{{ produto.url }}">
+                <img
+                  src="{{ produto.featured_image | image_url }}"
+                  alt="{{ produto.title }}"
+                  style="width: 330px; height: 330px; border-radius:10px; border:1px solid #EEEEEE;">
+              </a>
+              <div class="product-info-ideal-vc-2">
+                <p style="font-weight: bold; font-size:20px; margin-top: 30px">
+                  {{ produto.title | split: " " | slice: 0, 3 | join: " " }}
+                </p>
+                <div style="display: flex;">
+                  <p style="color:#518A70; margin-top: 32px; font-weight: bold;">
+                    {{ produto.price | money }}
+                  </p>
+                  <p style="color:black; margin-left:5px; font-size:10px; margin-top:34px">
+                    via pix
+                  </p>
+                </div>
+                <a href="{{ produto.url }}" style="font-size:14px; margin-top:30px; cursor:pointer; text-decoration:underline;">
+                  Saiba mais
+                </a>
+              </div>
+
+              <div class="tags-ideal-para-vc-2" style="margin-top: 116px;">
+                {% for tag in produto.tags %}
+                  <p style="width: 90%; padding-top: 15px; padding-bottom: 15px; border-top: 1px solid #EEEEEE; border-bottom: 1px solid #EEEEEE">
+                    {{ tag }} ✔
+                  </p>
+                {% endfor %}
+              </div>
+            </div>
+            {% assign shown = shown | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
 
 <script>
   var productPrice = {{ product.price | divided_by: 100 }};
@@ -230,9 +342,7 @@
   document.getElementById('product-description').innerHTML = productDescription;
   
   function calculateInstallments(price, maxInstallments, maxInstallments10) {
-    if (isNaN(price) || price <= 0) {
-      return 'Parcelamento não disponível';
-    }
+    if (isNaN(price) || price <= 0) return 'Parcelamento não disponível';
     var installmentValue6x = (price / maxInstallments).toFixed(2);
     var installmentValue10x = (price / maxInstallments10).toFixed(2);
     return `Em até ${maxInstallments}x de R$ ${installmentValue6x} sem juros<br> ou ${maxInstallments10}x de R$ ${installmentValue10x}`;
@@ -240,35 +350,48 @@
   
   installmentText.innerHTML = calculateInstallments(productPrice, maxInstallments, maxInstallments10);
   
-  var thumbnails = document.querySelectorAll('.thumbnail-image');
-  thumbnails.forEach(function(thumbnail) {
-    thumbnail.addEventListener('click', function() {
-      var mainImage = document.querySelector('.product-image img');
-      mainImage.src = thumbnail.src;
+  document.querySelectorAll('.thumbnail-image').forEach(thumbnail => {
+    thumbnail.addEventListener('click', () => {
+      document.querySelector('.product-image img').src = thumbnail.src;
     });
   });
   
   function addToCart(productId, quantity) {
-    var data = {
-      items: [{
-        id: productId,
-        quantity: quantity
-      }]
-    };
-  
     fetch('/cart/add.js', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data)
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: [{ id: productId, quantity }] })
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log("enviado!")
-    })
-    .catch((error) => {
-      console.error('Erro ao adicionar ao carrinho:', error);
-    });
+    .then(res => res.json())
+    .then(() => console.log("enviado!"))
+    .catch(err => console.error('Erro ao adicionar ao carrinho:', err));
   }
+  
+  // Inicializa todos como visíveis
+  document.querySelectorAll('.item_imagem_ideal_opção').forEach(el => {
+    el.style.display = 'block';
+  });
+  
+  // Cada select controla visibilidade do produto correspondente com debug
+  document.querySelectorAll('.opcoes select').forEach(select => {
+    select.addEventListener('change', () => {
+      const index = select.dataset.index;
+      const selectedTag = select.value;
+      const produto = document.querySelector(`.item_imagem_ideal_opção[data-index="${index}"]`);
+      if (!produto) return;
+  
+      const tagsRaw = produto.dataset.tags;
+      console.log(`Produto ${index} tags:`, tagsRaw);
+      console.log(`Filtro selecionado:`, selectedTag);
+  
+      const tags = tagsRaw.split(',').map(t => t.trim());
+  
+      if (selectedTag && selectedTag !== '' && selectedTag !== 'None') {
+  produto.style.display = tags.includes(selectedTag) ? 'block' : 'none';
+  } else {
+  produto.style.display = 'block';
+  }
+  
+    });
+  });
 </script>

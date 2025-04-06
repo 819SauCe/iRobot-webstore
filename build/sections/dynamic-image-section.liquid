@@ -1,0 +1,37 @@
+{% schema %}
+    {
+      "name": "Imagem Dinâmica com Texto",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "dynamic_image",
+          "label": "Imagem Dinâmica"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_text",
+          "label": "Mostrar Texto"
+        },
+        {
+          "type": "textarea",
+          "id": "optional_text",
+          "label": "Texto Opcional",
+          "default": "Texto exibido quando ativado"
+        }
+      ]
+    }
+    {% endschema %}
+    
+    <div class="dynamic-image-section" style="text-align: center; margin: 40px 0;">
+      {% if section.settings.dynamic_image %}
+        <img
+          src="{{ section.settings.dynamic_image | image_url }}"
+          alt="Imagem Dinâmica"
+          style="width: 100%; max-width: 600px; border-radius: 12px;">
+      {% endif %}
+    
+      {% if section.settings.show_text %}
+        <p style="margin-top: 20px; font-size: 18px; color: #333;">{{ section.settings.optional_text }}</p>
+      {% endif %}
+    </div>
+    
