@@ -1,17 +1,24 @@
 <div class='e-mosaic-banner'>
-
   <div class='e-container'>
     <div class='e-mosaic-banner__banner-list'>
       {% for block in section.blocks %}
         {% if block.type == 'mosaic_banner' %}
           {% if block.settings['mosaic_banner_image'] != blank %}
             <div class='e-mosaic-banner__banner-list--item'>
-              <a href='{{ block.settings["mosaic_banner_link"] }}'>
-                <img
-                  src='{{ block.settings["mosaic_banner_image"].src | img_url: '1600x600' }}'
-                  class='e-mosaic-banner__image'
-                  alt='{{ block.settings["mosaic_banner_image"].alt }}'>
-              </a>
+              <img
+                src='{{ block.settings["mosaic_banner_image"].src | img_url: '1600x600' }}'
+                class='e-mosaic-banner__image'
+                alt='{{ block.settings["mosaic_banner_image"].alt }}'>
+              <div class="container-mosaic-banner-duplo">
+                <a href='{{ block.settings["mosaic_banner_link"] }}'>
+                  <h1>{{ block.settings["mosaic_banner_title_item"] }}</h1>
+                </a>
+                <p class="subtitle-banner-duplo">{{ block.settings["mosaic_banner_subtittle_item"] }}</p>
+                <p class="subsubtitle-banner-duplo">{{ block.settings["mosaic_banner_subsubtittle_item"] }}</p>
+                <div class="button-confira-banner-duplo">
+                  <a href='{{ block.settings["mosaic_banner_link"] }}'>Confira</a>
+                </div>
+              </div>
             </div>
           {% endif %}
         {% endif %}
@@ -42,10 +49,25 @@
             "type": "image_picker",
             "id": "mosaic_banner_image",
             "label": "Imagem do Banner Desktop"
-          }, {
+          },
+          {
             "type": "url",
             "id": "mosaic_banner_link",
             "label": "Link do Banner"
+          },
+          {
+            "type": "text",
+            "id": "mosaic_banner_title_item",
+            "label": "titulo do banner"
+          },
+          {
+            "type": "text",
+            "id": "mosaic_banner_subtittle_item",
+            "label": "subtitulo do baner"
+          }, {
+            "type": "text",
+            "id": "mosaic_banner_subsubtittle_item",
+            "label": "sub sub titulo do baner"
           }
         ]
       }

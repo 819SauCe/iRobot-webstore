@@ -1,57 +1,58 @@
 .e-main-contact {
-    margin-top: 127px;
-    justify-items: center;
+  margin-top: 127px;
+  justify-items: center;
 }
 
 .container-subtitle-footer {
-    text-align: center;
-  }
-  
+  text-align: center;
+}
 
 .e-subtitle-footer {
-    margin-top: 24px;
-    margin-bottom: 30px;
-    font-size: 16px;
+  margin-top: 24px;
+  margin-bottom: 30px;
+  font-size: 16px;
 }
 
 .formulario-emails form {
-    display: flex;
-    gap: 12px;
-    margin-top: 30px;
-  }
-  
-  .contact-form input,
-  .contact-form button {
-    flex: 1;
-    height: 40px;
-  }
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+}
 
-  .contact-form input {
-    font-size: 14px;
-    width: 448px;
-    height: 48px;
-    border-radius: 24px;
-    color: black;
-    background-color: #F7F7F8;
-    border: 1px solid #E8E8E8;
-  }
+.contact-form input,
+.contact-form button {
+  flex: 1;
+  height: 40px;
+}
 
-  .contact-form input::placeholder {
-    color: black;
-    padding-left: 30px;
-  }
+.contact-form input {
+  font-size: 14px;
+  width: 448px;
+  height: 48px;
+  border-radius: 24px;
+  color: black;
+  background-color: #F7F7F8;
+  border: 1px solid #E8E8E8;
+}
 
-  .contact-form button {
-    background-color: #EBC172;
-    color: black;
-    width: 212px;
-    height: 48px;
-    border-radius: 40px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
+.contact-form input::placeholder {
+  color: black;
+  padding-left: 30px;
+}
 
-  .contact-form button:hover {
-    background-color: #ebc172a8;
-  }
-  
+.contact-form button {
+  background-color: #EBC172;
+  color: black;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #ebc172a8;
+}
+
+.submit-button-footer {
+  width: 212px;
+  height: 48px;
+}

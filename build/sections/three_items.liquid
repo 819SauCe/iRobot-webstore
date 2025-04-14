@@ -9,9 +9,13 @@
       {% assign produto_esquerda = produtos[0] %}
       {% if produto_esquerda %}
         <div class="product-card">
-          <img src="{{ produto_esquerda.featured_image | image_url }}" alt="{{ produto_esquerda.title }}">
+          <a href="{{ produto_esquerda.url }}">
+            <img src="{{ produto_esquerda.featured_image | image_url }}" alt="{{ produto_esquerda.title }}">
+          </a>
           <div class="info">
-            <h3>{{ produto_esquerda.title }}</h3>
+            <a href="{{ produto_esquerda.url }}">
+              <h3>{{ produto_esquerda.title }}</h3>
+            </a>
             <p class="description">{{ produto_esquerda.description | strip_html | truncate: 150 }}</p>
             <p class="old-price">{{ produto_esquerda.compare_at_price | money }}</p>
             <p class="price">{{ produto_esquerda.price | money }}<span class="pix">

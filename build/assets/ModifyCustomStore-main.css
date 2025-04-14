@@ -344,30 +344,31 @@ a:hover, a:focus, a:active {
 .e-searchBar input {
   width: 590px;
   height: 40px;
+  background-color: #F7F7F8;
+  border: 1px solid #E8E8E8;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  padding-left: 16px;
 }
 
 .e-searchBar input::-webkit-input-placeholder {
-  padding-left: 16px;
   color: #A0A0A0;
 }
 
 .e-searchBar input:-moz-placeholder {
-  padding-left: 16px;
   color: #A0A0A0;
 }
 
 .e-searchBar input::-moz-placeholder {
-  padding-left: 16px;
   color: #A0A0A0;
 }
 
 .e-searchBar input::-ms-input-placeholder {
-  padding-left: 16px;
   color: #A0A0A0;
 }
 
 .e-searchBar input::placeholder {
-  padding-left: 16px;
   color: #A0A0A0;
 }
 
@@ -465,7 +466,8 @@ a:hover, a:focus, a:active {
   height: 27;
 }
 
-.login-textos, .televendas-textos {
+.login-textos,
+.televendas-textos {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -586,7 +588,10 @@ a:hover, a:focus, a:active {
      -moz-box-orient: vertical;
      -moz-box-direction: normal;
           flex-direction: column;
-  margin-top: 60px;
+}
+
+.vitrine .title {
+  font-size: 36px;
 }
 
 .subtitle {
@@ -689,7 +694,7 @@ a:hover, a:focus, a:active {
 
 .installments {
   font-size: 12px;
-  color: gray;
+  color: #000000;
 }
 
 .bottom-section {
@@ -762,6 +767,7 @@ a:hover, a:focus, a:active {
      -moz-box-pack: center;
           justify-content: center;
   gap: 5px;
+  font-weight: bold;
 }
 
 .icon-pet {
@@ -875,6 +881,7 @@ a:hover, a:focus, a:active {
 .title1 {
   margin-top: 88px;
   font-size: 36px;
+  text-align: center;
 }
 
 .title_three_combo {
@@ -896,6 +903,7 @@ a:hover, a:focus, a:active {
   font-size: 16px;
   margin-bottom: 30px;
   font-weight: normal;
+  text-align: center;
 }
 
 .product-card {
@@ -1029,23 +1037,73 @@ a:hover, a:focus, a:active {
   display: -webkit-flex;
   display: -moz-box;
   display: flex;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-     -moz-box-pack: start;
-          justify-content: flex-start;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
   gap: 24px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
 }
 
-.e-mosaic-banner__banner-list > * {
+.e-mosaic-banner__banner-list--item {
+  position: relative;
+}
+
+.e-mosaic-banner__image {
   width: 708px;
   height: 360px;
 }
 
-.e-mosaic-banner__banner-list > *:last-child {
-  margin-left: auto;
+.container-mosaic-banner-duplo {
+  position: absolute;
+  top: 28%;
+  width: 335px;
+  height: 162px;
+  background-color: #447355;
+  color: white;
+  z-index: 9999;
+}
+
+.e-mosaic-banner__banner-list--item:nth-child(1) .container-mosaic-banner-duplo {
+  left: 0;
+  right: auto;
+}
+
+.e-mosaic-banner__banner-list--item:nth-child(2) .container-mosaic-banner-duplo {
+  right: 0;
+  left: auto;
+}
+
+.container-mosaic-banner-duplo h1 {
+  padding-top: 18px;
+  margin-left: 19px;
+  font-size: 24px;
+}
+
+.container-mosaic-banner-duplo .subtitle-banner-duplo {
+  margin-top: 5px;
+  margin-left: 19px;
+  font-size: 16px;
+}
+
+.container-mosaic-banner-duplo .subsubtitle-banner-duplo {
+  font-size: 12px;
+  margin-left: 19px;
+}
+
+.button-confira-banner-duplo {
+  width: 111px;
+  height: 32px;
+  margin-top: 11px;
+  margin-left: 19px;
+  color: black;
+  background-color: #EBC172;
+  -webkit-border-radius: 40px;
+     -moz-border-radius: 40px;
+          border-radius: 40px;
+  text-align: center;
+  -webkit-align-content: center;
+          align-content: center;
+  cursor: pointer;
 }
 
 .vitrine {
@@ -1306,6 +1364,7 @@ a:hover, a:focus, a:active {
 .e-main-banner {
   width: 100%;
   height: auto;
+  margin-top: 100px;
 }
 
 .e-main-banner {
